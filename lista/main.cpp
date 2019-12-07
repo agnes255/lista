@@ -4,33 +4,27 @@ using namespace std;
 
 int main()
 {
-  struct Osoba
-  {
-      string imie;
-      string nazwisko;
-      float wzrost;
-      int wiek;
-      bool czyKobieta;
-  };
-  Osoba Weronika;
-  Weronika.imie="Weronika";
-  Weronika.nazwisko="Nowak";
-  Weronika.wzrost=165.5;
-  Weronika.wiek=12;
-  Weronika.czyKobieta=true;
-  //cout<<Weronika.imie << " "<<Weronika.nazwisko;
-  Osoba tab[3];
-  for(int i=0; i<3; i++ )
-  {
-      cin>>tab[i].imie;
-      cin>>tab[i].nazwisko;
-      cin>>tab[i].wzrost;
-      cin>>tab[i].wiek;
-      cin>>tab[i].czyKobieta;
-  }
-  for(int i=0; i<3; i++)
-  {
-      cout<<tab[i].imie << " " <<tab[i].nazwisko<< " " <<tab[i].wzrost<< " " <<tab[i].wiek << " " <<tab[i].czyKobieta<<endl;
-  }
+struct Element
+{
+    int wartosc;
+    Element *nastepny;
+};
+Element *pierwszy=new Element();
+pierwszy -> wartosc=15;
+Element *drugi=new Element();
+drugi -> wartosc=7;
+Element *trzeci=new Element();
+trzeci->wartosc=10;
+pierwszy->nastepny=drugi;
+drugi->nastepny=trzeci;
+Element *dwaIpol=new Element();
+dwaIpol->wartosc=4;
+drugi->nastepny=dwaIpol;
+dwaIpol->nastepny=trzeci;
+trzeci->nastepny=NULL;
+for(Element *tmp=pierwszy; tmp!=NULL; tmp=tmp->nastepny)
+{
+    cout<<tmp->wartosc<<endl;
+}
     return 0;
 }
